@@ -1,9 +1,11 @@
 const express = require('express');
 const path = require('path');
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 const server = express();
 
+
+server.get('./notes', express.static(path.join(__dirname, 'public/notes.html')));
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.listen(PORT, () => {
